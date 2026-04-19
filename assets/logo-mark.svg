@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" fill="none">
+  <g stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M40 180 L40 30 L135 10 L135 180 Z" fill="rgba(201,169,97,0.12)"></path>
+    <line x1="64" y1="180" x2="64" y2="25"></line>
+    <line x1="88" y1="180" x2="88" y2="20"></line>
+    <line x1="112" y1="180" x2="112" y2="15"></line>
+    <path d="M135 55 L210 80 L210 180 L135 180 Z"></path>
+    <line x1="135" y1="55" x2="210" y2="180"></line>
+  </g>
+</svg>

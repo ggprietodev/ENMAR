@@ -31,6 +31,7 @@ const Content = () => (
           <li><strong>Google Fonts</strong> — carga las tipografías del sitio desde los servidores de Google, lo que implica una conexión técnica que revela tu dirección IP a Google.</li>
           <li><strong>OpenStreetMap</strong> — el mapa incrustado en la página de contacto puede establecer cookies propias del proveedor al interactuar con él.</li>
           <li><strong>FormSubmit</strong> — el envío del formulario de contacto se procesa a través de este servicio de terceros, sin cookies de seguimiento asociadas.</li>
+          <li><strong>Tidio</strong> — el chat en directo del sitio utiliza cookies propias para mantener tu conversación activa entre páginas y, si aceptas, para recordar tu identidad en futuras visitas.</li>
         </ul>
       </div>
       <div>

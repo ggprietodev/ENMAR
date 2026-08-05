@@ -64,9 +64,10 @@ em { font-style: italic; color: var(--gold); font-weight: 300; }
 .mobile-drawer { position: fixed; inset: 0; background: var(--ink); color: var(--bone); z-index: 100; transform: translateX(100%); transition: transform 0.4s cubic-bezier(.6,.1,.2,1); display: flex; flex-direction: column; }
 .mobile-drawer.is-open { transform: translateX(0); }
 .drawer-close { position: absolute; top: 22px; right: 22px; color: var(--gold); padding: 8px; }
-.drawer-inner { padding: 100px 32px 40px; display: flex; flex-direction: column; gap: 4px; flex: 1; overflow-y: auto; }
-.drawer-inner > a { font-family: var(--serif); font-size: 36px; font-weight: 300; padding: 12px 0; color: var(--bone); border-bottom: 1px solid rgba(245,239,217,0.08); transition: color 0.2s; }
-.drawer-inner > a.active { color: var(--gold); }
+.drawer-inner { padding: 96px 32px 32px; display: flex; flex-direction: column; gap: 2px; flex: 1; overflow-y: auto; }
+.drawer-inner > a.drawer-link { font-family: var(--serif); font-size: 26px; font-weight: 300; padding: 10px 0; color: var(--bone); border-bottom: 1px solid rgba(245,239,217,0.08); transition: color 0.2s; }
+.drawer-inner > a.drawer-link.active { color: var(--gold); }
+.drawer-cta { margin-top: 24px; align-self: flex-start; }
 .drawer-foot { margin-top: auto; padding-top: 32px; border-top: 1px solid rgba(245,239,217,0.1); display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: rgba(245,239,217,0.6); }
 .drawer-foot a { color: rgba(245,239,217,0.6); }
 .btn { display: inline-flex; align-items: center; gap: 14px; padding: 16px 32px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; transition: all 0.3s ease; cursor: pointer; border: 1px solid transparent; }
@@ -190,7 +191,7 @@ em { font-style: italic; color: var(--gold); font-weight: 300; }
   .page-head { padding: 120px 0 60px; }
   p.lead, p { font-size: 15px !important; }
   p.lead { font-size: 17px !important; }
-  .drawer-inner > a { font-size: 28px; }
+  .drawer-inner > a.drawer-link { font-size: 22px; }
   /* Footer bottom stack */
   .footer-bottom a { margin-left: 0; margin-right: 16px; }
 }

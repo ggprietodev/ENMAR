@@ -66,6 +66,7 @@ const Nav = ({ current, variant = "over-dark" }) => {
           <div className="drawer-foot">
             <a href="https://wa.me/34685972744">WhatsApp · +34 685 97 27 44</a>
             <a href="mailto:Grupoenmar@gmail.com">Grupoenmar@gmail.com</a>
+            <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer">Instagram · @grupoenmar</a>
           </div>
         </div>
       </div>
@@ -110,6 +111,7 @@ const Footer = () => (
             <li>39509 · Cantabria</li>
             <li style={{ marginTop: 8 }}><a href="mailto:Grupoenmar@gmail.com">Grupoenmar@gmail.com</a></li>
             <li><a href="https://wa.me/34685972744">+34 685 97 27 44</a></li>
+            <li><a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer">Instagram · @grupoenmar</a></li>
           </ul>
         </div>
       </div>

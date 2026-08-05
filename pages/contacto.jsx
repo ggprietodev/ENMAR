@@ -82,6 +82,10 @@ const Content = () => (
           <a href="mailto:Grupoenmar@gmail.com" style={{ fontFamily:"var(--serif)", fontSize:22, color:"var(--ink)", borderBottom:"1px solid var(--gold)", paddingBottom:2 }}>Grupoenmar@gmail.com</a>
         </div>
         <div>
+          <div style={{ fontSize:11, letterSpacing:"0.24em", textTransform:"uppercase", color:"var(--olive)", marginBottom:16 }}>Instagram</div>
+          <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"var(--serif)", fontSize:22, color:"var(--ink)", borderBottom:"1px solid var(--gold)", paddingBottom:2 }}>@grupoenmar</a>
+        </div>
+        <div>
           <div style={{ fontSize:11, letterSpacing:"0.24em", textTransform:"uppercase", color:"var(--olive)", marginBottom:16 }}>Horario</div>
           <div style={{ color:"var(--graphite)", fontSize:15, lineHeight:1.7 }}>Lunes a viernes · 9:00 – 18:00<br/>Sábados · Previa cita</div>
         </div>

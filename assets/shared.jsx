@@ -16,52 +16,21 @@ const Arrow = ({ size = 14 }) => (
     <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
   </svg>
 );
-const IconYears = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="13" r="8" stroke="currentColor" strokeWidth="1.4" />
-    <path d="M12 9v4l3 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M9 2h6M12 2v2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-  </svg>
-);
-const IconShield = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <path d="M12 2l7 3v6c0 5-3.2 8.4-7 11-3.8-2.6-7-6-7-11V5l7-3z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-    <path d="M8.5 12l2.5 2.5L16 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-const IconTeam = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.4" />
-    <circle cx="17" cy="9" r="2.4" stroke="currentColor" strokeWidth="1.4" />
-    <path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-    <path d="M14.5 14.2c2.5.3 4.5 2.4 4.5 5.3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-  </svg>
-);
-const IconHomeCheck = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <path d="M3 11l9-7 9 7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M5 10v9h14v-9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M9.5 15l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 const TrustBar = () => {
   const items = [
-    { icon: <IconYears />, label: "+10 años", sub: "de experiencia" },
-    { icon: <IconShield />, label: "Garantía decenal", sub: "en toda promoción" },
-    { icon: <IconTeam />, label: "Equipo propio", sub: "en cada obra" },
-    { icon: <IconHomeCheck />, label: "24+ proyectos", sub: "entregados" },
+    { n: "+10", l: "Años de experiencia" },
+    { n: "10", l: "Años de garantía decenal" },
+    { n: "100%", l: "Equipo propio en obra" },
+    { n: "24+", l: "Proyectos entregados" },
   ];
   return (
-    <section style={{ padding: "44px 0", borderBottom: "1px solid var(--line)" }}>
+    <section style={{ background: "var(--ink)", color: "var(--bone)", padding: "64px 0" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
           {items.map((it, i) => (
-            <div key={i} className="reveal" style={{ display: "flex", alignItems: "center", gap: 16 }}>
-              <div style={{ color: "var(--gold)", flexShrink: 0 }}>{it.icon}</div>
-              <div>
-                <div style={{ fontFamily: "var(--serif)", fontSize: 19, color: "var(--ink)", lineHeight: 1.2 }}>{it.label}</div>
-                <div style={{ fontSize: 11, letterSpacing: "0.06em", color: "var(--muted)" }}>{it.sub}</div>
-              </div>
+            <div key={i} className="reveal" style={{ borderLeft: "1px solid rgba(201,169,97,0.3)", paddingLeft: 28 }}>
+              <div style={{ fontFamily: "var(--serif)", fontSize: 48, fontWeight: 300, color: "var(--gold)", lineHeight: 1, marginBottom: 10 }}>{it.n}</div>
+              <div style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(245,239,217,0.6)" }}>{it.l}</div>
             </div>
           ))}
         </div>

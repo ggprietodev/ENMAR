@@ -182,17 +182,33 @@ const Process = () => {
     </section>
   );
 };
-// Widget "Google Reviews" de SociableKit (plan gratuito), conectado a la ficha
-// de Google de ENMAR desde sociablekit.com. El script se carga una vez en <head>.
-const GoogleReviews = () => (
-  <section className="section" style={{ background: "var(--cream)" }}>
-    <div className="container-narrow" style={{ textAlign: "center" }}>
-      <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>05 — Opiniones</div>
-      <h2 style={{ marginBottom: 48 }}>Lo que dicen<br/><em>nuestros clientes en Google.</em></h2>
-      <div className="reveal sk-ww-google-reviews" data-embed-id="25703025"></div>
-    </div>
-  </section>
-);
+// Los widgets de SociableKit escanean la página una sola vez al cargar su script,
+// buscando el <div> de destino. Como React (vía Babel en el navegador) monta el
+// contenido después de que el HTML termine de parsearse, un <script> estático en
+// <head> se ejecuta antes de que el div exista y nunca lo encuentra. Este hook
+// inyecta el script ya montado el componente, para que el div esté presente.
+const useSociableKitScript = (src) => {
+  React.useEffect(() => {
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const s = document.createElement("script");
+    s.src = src;
+    s.defer = true;
+    document.body.appendChild(s);
+  }, [src]);
+};
+// Widget "Google Reviews" de SociableKit (plan gratuito), conectado a la ficha de Google de ENMAR.
+const GoogleReviews = () => {
+  useSociableKitScript("https://widgets.sociablekit.com/google-reviews/widget.js");
+  return (
+    <section className="section" style={{ background: "var(--cream)" }}>
+      <div className="container-narrow" style={{ textAlign: "center" }}>
+        <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>05 — Opiniones</div>
+        <h2 style={{ marginBottom: 48 }}>Lo que dicen<br/><em>nuestros clientes en Google.</em></h2>
+        <div className="reveal sk-ww-google-reviews" data-embed-id="25703025"></div>
+      </div>
+    </section>
+  );
+};
 const Ticker = () => {
   const p = ["Santander","Comillas","Santillana del Mar","Torrelavega","Mazcuerras","San Vicente de la Barquera","Cabezón de la Sal","Suances","Villanueva de la Peña","Reocín"];
   const list = [...p, ...p];
@@ -208,9 +224,10 @@ const Ticker = () => {
     </section>
   );
 };
-// Widget "Instagram Feed" de SociableKit (plan gratuito), conectado a @grupoenmar
-// desde sociablekit.com. El script se carga una vez en <head>.
-const InstagramFeed = () => (
+// Widget "Instagram Feed" de SociableKit (plan gratuito), conectado a @grupoenmar.
+const InstagramFeed = () => {
+  useSociableKitScript("https://widgets.sociablekit.com/instagram-feed/widget.js");
+  return (
   <section className="section" style={{ background: "var(--bone)" }}>
     <div className="container">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, flexWrap: "wrap", gap: 24 }}>
@@ -223,7 +240,8 @@ const InstagramFeed = () => (
       <div className="reveal sk-instagram-feed" data-embed-id="25703029"></div>
     </div>
   </section>
-);
+  );
+};
 const ContactCTA = () => (
   <section style={{ background: "var(--ink)", color: "var(--bone)", padding: "160px 0", position: "relative", overflow: "hidden" }}>
     <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=2000&q=80)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.18 }} />

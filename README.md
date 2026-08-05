@@ -1,6 +1,6 @@
 # Construcciones Cantabria — Sitio web
 
-Sitio web estático de una empresa constructora (ficticia) con sede en Cantabria. Siete páginas HTML con React + Babel inline, sin build step.
+Sitio web estático de ENMAR Construcción, empresa constructora con sede en Cantabria. React + Babel Standalone, sin build step.
 
 ## Estructura
 
@@ -10,9 +10,15 @@ Sitio web estático de una empresa constructora (ficticia) con sede en Cantabria
 ├── nosotros.html        # Sobre nosotros
 ├── servicios.html       # Servicios
 ├── portfolio.html       # Listado de proyectos
-├── proyecto.html        # Ficha de proyecto individual
+├── proyecto.html        # Ficha de proyecto (?id=N selecciona el proyecto)
 ├── promociones.html     # Promociones en venta
-├── contacto.html        # Contacto
+├── contacto.html        # Contacto (formulario vía FormSubmit.co)
+├── aviso-legal.html     # Aviso legal (borrador, revisar con un profesional)
+├── privacidad.html      # Política de privacidad (borrador, revisar con un profesional)
+├── cookies.html         # Política de cookies (borrador, revisar con un profesional)
+├── 404.html             # Página de error servida por GitHub Pages
+├── robots.txt
+├── sitemap.xml
 ├── assets/
 │   ├── styles.css       # Estilos globales
 │   ├── shared.jsx       # Header, Footer, utilidades compartidas
@@ -25,10 +31,13 @@ Sitio web estático de una empresa constructora (ficticia) con sede en Cantabria
     ├── portfolio.jsx
     ├── proyecto.jsx
     ├── promociones.jsx
-    └── contacto.jsx
+    ├── contacto.jsx
+    ├── aviso-legal.jsx
+    ├── privacidad.jsx
+    └── cookies.jsx
 ```
 
-Cada `.html` carga React, ReactDOM, Babel Standalone, `assets/shared.jsx` y su `pages/<página>.jsx` correspondiente.
+Cada `.html` carga React, ReactDOM, Babel Standalone, `assets/shared.jsx` y su `pages/<página>.jsx` correspondiente — ese es el único lugar donde vive el código, no lo dupliques inline en el HTML.
 
 ## Ejecución local
 
@@ -54,4 +63,6 @@ Luego visita `http://localhost:8000/`.
 
 - Las imágenes de proyectos se cargan desde Unsplash (CDN externo).
 - Para producción real, sustituye las URLs de Unsplash por imágenes propias en `assets/`.
-- Todo el texto y datos son de ejemplo.
+- El formulario de contacto envía los datos a FormSubmit.co (`https://formsubmit.co/ajax/Grupoenmar@gmail.com`), gratuito y sin necesidad de backend. La primera vez que alguien lo envíe, FormSubmit mandará un email de confirmación a Grupoenmar@gmail.com que hay que aceptar para activar los envíos.
+- `aviso-legal.html`, `privacidad.html` y `cookies.html` son plantillas de referencia (marcadas `noindex` en su `<meta name="robots">`). Quita el `noindex` y actualiza el contenido una vez que un profesional legal las haya revisado.
+- `proyecto.html` es una única plantilla de ficha de proyecto; el parámetro `?id=N` (ver `pages/proyecto.jsx`) selecciona nombre, ubicación, año y superficie del proyecto correspondiente al listado de `pages/portfolio.jsx`. La narrativa de materiales y el testimonio son contenido de ejemplo compartido por todas las fichas.

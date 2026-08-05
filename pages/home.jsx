@@ -223,11 +223,35 @@ const Ticker = () => {
     </section>
   );
 };
+// Sustituye ELFSIGHT_WIDGET_ID por el ID de tu widget en https://elfsight.com/instagram-feed-instashow/
+// (conecta tu cuenta @grupoenmar allí) para que este bloque muestre el feed real y se actualice solo.
+const ELFSIGHT_WIDGET_ID = "";
+const InstagramFeed = () => (
+  <section className="section" style={{ background: "var(--bone)" }}>
+    <div className="container">
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, flexWrap: "wrap", gap: 24 }}>
+        <div className="reveal">
+          <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>06 — Síguenos</div>
+          <h2>Nuestro día a día<br/><em>en Instagram.</em></h2>
+        </div>
+        <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ color: "var(--ink)" }}>@grupoenmar <Arrow /></a>
+      </div>
+      {ELFSIGHT_WIDGET_ID ? (
+        <div className={`elfsight-app-${ELFSIGHT_WIDGET_ID}`} data-elfsight-app-lazy></div>
+      ) : (
+        <div className="reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "80px 40px", background: "var(--cream)", textAlign: "center" }}>
+          <p style={{ color: "var(--graphite)", maxWidth: "48ch", fontSize: 16, lineHeight: 1.6 }}>Muy pronto, las últimas fotos de obra directamente desde Instagram. Mientras tanto, síguenos en @grupoenmar.</p>
+          <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Ver en Instagram <Arrow /></a>
+        </div>
+      )}
+    </div>
+  </section>
+);
 const ContactCTA = () => (
   <section style={{ background: "var(--ink)", color: "var(--bone)", padding: "160px 0", position: "relative", overflow: "hidden" }}>
     <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=2000&q=80)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.18 }} />
     <div className="container-narrow" style={{ position: "relative", textAlign: "center" }}>
-      <div className="eyebrow eyebrow-gold" style={{ marginBottom: 32 }}><span className="gold-line"></span>06 — Hablemos</div>
+      <div className="eyebrow eyebrow-gold" style={{ marginBottom: 32 }}><span className="gold-line"></span>07 — Hablemos</div>
       <h2 style={{ color: "var(--bone)", marginBottom: 36, fontSize: "clamp(42px, 6vw, 88px)" }}>¿Tienes un <em>proyecto</em><br/>en mente?</h2>
       <p style={{ color: "rgba(245,239,217,0.7)", fontSize: 19, maxWidth: "52ch", margin: "0 auto 48px", lineHeight: 1.55 }}>Cuéntanos tu idea. Visitamos el terreno, entendemos tu visión y te damos una propuesta honesta y sin compromiso.</p>
       <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
@@ -237,5 +261,5 @@ const ContactCTA = () => (
     </div>
   </section>
 );
-const Home = () => { useReveal(); return (<><Nav current="home" variant="over-dark" /><Hero /><Stats /><Intro /><ServicesPreview /><Featured /><PortfolioTeaser /><Process /><Testimonials /><Ticker /><ContactCTA /><Footer /></>); };
+const Home = () => { useReveal(); return (<><Nav current="home" variant="over-dark" /><Hero /><Stats /><Intro /><ServicesPreview /><Featured /><PortfolioTeaser /><Process /><Testimonials /><Ticker /><InstagramFeed /><ContactCTA /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Home />);

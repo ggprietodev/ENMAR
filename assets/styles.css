@@ -194,11 +194,26 @@ em { font-style: italic; color: var(--gold); font-weight: 300; }
   .footer-bottom a { margin-left: 0; margin-right: 16px; }
 }
 .gold-line { display: inline-block; width: 48px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 16px; }
-.img-hover { overflow: hidden; }
+.img-hover { overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .img-hover img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); width: 100%; height: 100%; object-fit: cover; }
+.img-hover:hover { transform: translateY(-6px); box-shadow: 0 28px 56px -24px rgba(26,29,23,0.4); }
 .img-hover:hover img { transform: scale(1.06); }
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+  .img-hover:hover, .img-hover:hover img { transform: none; }
+}
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .page-head { background: var(--ink); color: var(--bone); padding: 220px 0 120px; position: relative; overflow: hidden; }
 .page-head::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(201,169,97,0.12), transparent 60%); pointer-events: none; }

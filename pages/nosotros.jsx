@@ -21,8 +21,8 @@ const Story = () => (
         <p style={{ color: "var(--graphite)" }}>Nos especializamos en viviendas unifamiliares de diseño, cubiertas de madera laminada y promociones residenciales de pequeña escala. Trabajamos con arquitectos y aparejadores de confianza, pero con un equipo propio en obra que garantiza el control de calidad y plazos.</p>
         <p style={{ color: "var(--graphite)" }}>Cada proyecto lo gestionamos desde la primera reunión hasta la entrega final. Creemos que una vivienda se construye tan bien como se comunica: con transparencia, honestidad y la capacidad de estar presentes cuando el cliente nos necesita.</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20, marginTop: 20 }}>
-          <div className="img-hover" style={{ aspectRatio: "4/5" }}><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80" alt="Equipo de ENMAR en obra" /></div>
-          <div className="img-hover" style={{ aspectRatio: "4/5", marginTop: 50 }}><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80" alt="Vivienda de diseño construida por ENMAR" /></div>
+          <div className="img-hover" style={{ aspectRatio: "4/5" }}><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80" alt="Equipo de ENMAR en obra" loading="lazy" decoding="async" /></div>
+          <div className="img-hover" style={{ aspectRatio: "4/5", marginTop: 50 }}><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80" alt="Vivienda de diseño construida por ENMAR" loading="lazy" decoding="async" /></div>
         </div>
       </div>
     </div>

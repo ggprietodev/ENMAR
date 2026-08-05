@@ -66,3 +66,8 @@ Luego visita `http://localhost:8000/`.
 - El formulario de contacto envía los datos a FormSubmit.co (`https://formsubmit.co/ajax/Grupoenmar@gmail.com`), gratuito y sin necesidad de backend. La primera vez que alguien lo envíe, FormSubmit mandará un email de confirmación a Grupoenmar@gmail.com que hay que aceptar para activar los envíos.
 - `aviso-legal.html`, `privacidad.html` y `cookies.html` son plantillas de referencia (marcadas `noindex` en su `<meta name="robots">`). Quita el `noindex` y actualiza el contenido una vez que un profesional legal las haya revisado.
 - `proyecto.html` es una única plantilla de ficha de proyecto; el parámetro `?id=N` (ver `pages/proyecto.jsx`) selecciona nombre, ubicación, año y superficie del proyecto correspondiente al listado de `pages/portfolio.jsx`. La narrativa de materiales y el testimonio son contenido de ejemplo compartido por todas las fichas.
+- La home incluye una sección "Síguenos en Instagram" (`InstagramFeed` en `pages/home.jsx`) pensada para el widget de [Elfsight Instagram Feed](https://elfsight.com/instagram-feed-instashow/). Mientras `ELFSIGHT_WIDGET_ID` esté vacío se muestra un aviso "muy pronto" con enlace a @grupoenmar. Para activar el feed real:
+  1. Crea una cuenta en elfsight.com y añade el widget "Instagram Feed & InstaShow".
+  2. Conecta tu cuenta de Instagram (@grupoenmar) desde el panel de Elfsight y personaliza colores/diseño.
+  3. Copia el ID del widget (la parte final de la clase `elfsight-app-XXXXXXXX-XXXX-...` que te da su panel) y pégalo en `ELFSIGHT_WIDGET_ID` al principio de `pages/home.jsx`.
+  4. El `<script src="https://static.elfsight.com/platform/platform.js">` ya está incluido en `index.html`, no hace falta tocar nada más.

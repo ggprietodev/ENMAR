@@ -30,7 +30,7 @@ const Grid = () => {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20, marginBottom: 60, borderBottom: "1px solid var(--line)", paddingBottom: 28 }}>
           <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
             {cats.map(c => (
-              <button key={c} onClick={() => setF(c)} style={{ padding: "10px 22px", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 500, border: "1px solid", borderColor: f === c ? "var(--ink)" : "var(--line)", background: f === c ? "var(--ink)" : "transparent", color: f === c ? "var(--bone)" : "var(--ink)" }}>{c}</button>
+              <button key={c} onClick={() => setF(c)} aria-pressed={f === c} style={{ padding: "10px 22px", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 500, border: "1px solid", borderColor: f === c ? "var(--ink)" : "var(--line)", background: f === c ? "var(--ink)" : "transparent", color: f === c ? "var(--bone)" : "var(--ink)" }}>{c}</button>
             ))}
           </div>
           <div style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--muted)" }}>{filtered.length} proyectos</div>
@@ -38,7 +38,7 @@ const Grid = () => {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, rowGap: 60 }}>
           {filtered.map((p, i) => (
             <a key={p.id} href={`proyecto.html?id=${p.id}`} className="reveal" style={{ display: "block", marginTop: i % 3 === 1 ? 60 : 0 }}>
-              <div className="img-hover" style={{ aspectRatio: "4/5", marginBottom: 20 }}><img src={p.img} alt={p.name} /></div>
+              <div className="img-hover" style={{ aspectRatio: "4/5", marginBottom: 20 }}><img src={p.img} alt={p.name} loading="lazy" decoding="async" /></div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
                 <div style={{ fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--gold)" }}>{p.cat} · {p.year}</div>
                 <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--muted)" }}>{p.size}</div>

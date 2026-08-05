@@ -27,7 +27,7 @@ const Hero = () => {
       </div>
       <div style={{ position: "absolute", bottom: 32, left: 0, right: 0, display: "flex", justifyContent: "space-between", padding: "0 40px", color: "rgba(245,239,217,0.5)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase" }}>
         <div style={{ display: "flex", gap: 8 }}>
-          {heroImgs.map((_, k) => <button key={k} onClick={() => setI(k)} style={{ width: 32, height: 2, background: k === i ? "var(--gold)" : "rgba(245,239,217,0.25)", padding: 0, transition: "background 0.3s" }} />)}
+          {heroImgs.map((_, k) => <button key={k} onClick={() => setI(k)} aria-label={`Ver imagen ${k + 1} de ${heroImgs.length}`} aria-current={k === i} style={{ width: 32, height: 2, background: k === i ? "var(--gold)" : "rgba(245,239,217,0.25)", padding: 0, transition: "background 0.3s" }} />)}
         </div>
         <div>Scroll ↓</div>
       </div>
@@ -57,8 +57,8 @@ const Intro = () => (
         <a href="nosotros.html" className="btn btn-outline" style={{ color: "var(--ink)" }}>Conocer la empresa <Arrow /></a>
       </div>
       <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, position: "relative" }}>
-        <div className="img-hover" style={{ aspectRatio: "3/4", marginTop: 60 }}><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80" alt="Vivienda construida por ENMAR en Cantabria" /></div>
-        <div className="img-hover" style={{ aspectRatio: "3/4" }}><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Equipo de ENMAR trabajando en obra" /></div>
+        <div className="img-hover" style={{ aspectRatio: "3/4", marginTop: 60 }}><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80" alt="Vivienda construida por ENMAR en Cantabria" loading="lazy" decoding="async" /></div>
+        <div className="img-hover" style={{ aspectRatio: "3/4" }}><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Equipo de ENMAR trabajando en obra" loading="lazy" decoding="async" /></div>
         <div style={{ position: "absolute", bottom: -30, left: -30, background: "var(--gold)", color: "var(--ink)", padding: "24px 32px", maxWidth: 240 }}>
           <div style={{ fontFamily: "var(--serif)", fontSize: 44, lineHeight: 1, marginBottom: 8 }}>3</div>
           <div style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase" }}>Años<br/>construyendo<br/>en Cantabria</div>
@@ -93,7 +93,7 @@ const ServicesPreview = () => {
                 <p style={{ color: "var(--graphite)", fontSize: 15, lineHeight: 1.6 }}>{x.d}</p>
                 <div style={{ marginTop: 32, fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--olive)", display: "flex", alignItems: "center", gap: 10 }}>Saber más <Arrow size={12} /></div>
               </div>
-              <div className="img-hover" style={{ aspectRatio: "4/5", height: "100%" }}><img src={x.img} alt={x.t} /></div>
+              <div className="img-hover" style={{ aspectRatio: "4/5", height: "100%" }}><img src={x.img} alt={x.t} loading="lazy" decoding="async" /></div>
             </a>
           ))}
         </div>
@@ -142,7 +142,7 @@ const PortfolioTeaser = () => {
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gridTemplateRows: "auto auto", gap: 24 }}>
           {p.map((x, i) => (
             <a key={x.name} href={`proyecto.html?id=${x.id}`} className="reveal img-hover" style={{ ...styles[i], position: "relative", overflow: "hidden" }}>
-              <img src={x.img} alt={x.name} />
+              <img src={x.img} alt={x.name} loading="lazy" decoding="async" />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 50%, rgba(26,29,23,0.7) 100%)" }} />
               <div style={{ position: "absolute", bottom: 28, left: 28, right: 28, color: "var(--bone)" }}>
                 <div style={{ fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--gold)", marginBottom: 8 }}>{x.loc} · {x.year}</div>
@@ -189,8 +189,16 @@ const Testimonials = () => {
     { q: "La comunicación semanal durante la obra marcó la diferencia. Siempre supimos exactamente en qué fase estábamos.", by: "Alberto M.", r: "Reforma integral, Torrelavega" },
   ];
   const [i, setI] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
+  React.useEffect(() => {
+    if (paused) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    const timer = setInterval(() => setI(x => (x + 1) % t.length), 7000);
+    return () => clearInterval(timer);
+  }, [paused, t.length]);
   return (
-    <section className="section" style={{ background: "var(--cream)" }}>
+    <section className="section" style={{ background: "var(--cream)" }} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="container-narrow" style={{ textAlign: "center" }}>
         <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>05 — Testimonios</div>
         <h2 style={{ marginBottom: 80 }}>Lo que dicen<br/><em>nuestros clientes.</em></h2>
@@ -202,7 +210,7 @@ const Testimonials = () => {
           <div style={{ fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--olive)", marginTop: 6 }}>{t[i].r}</div>
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 60 }}>
-          {t.map((_, j) => <button key={j} onClick={() => setI(j)} style={{ width: 40, height: 2, background: j === i ? "var(--gold)" : "rgba(26,29,23,0.2)", padding: 0 }} />)}
+          {t.map((_, j) => <button key={j} onClick={() => setI(j)} aria-label={`Ver testimonio ${j + 1} de ${t.length}`} aria-current={j === i} style={{ width: 40, height: 2, background: j === i ? "var(--gold)" : "rgba(26,29,23,0.2)", padding: 0 }} />)}
         </div>
       </div>
     </section>
@@ -223,11 +231,35 @@ const Ticker = () => {
     </section>
   );
 };
+// Sustituye ELFSIGHT_WIDGET_ID por el ID de tu widget en https://elfsight.com/instagram-feed-instashow/
+// (conecta tu cuenta @grupoenmar allí) para que este bloque muestre el feed real y se actualice solo.
+const ELFSIGHT_WIDGET_ID = "";
+const InstagramFeed = () => (
+  <section className="section" style={{ background: "var(--bone)" }}>
+    <div className="container">
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, flexWrap: "wrap", gap: 24 }}>
+        <div className="reveal">
+          <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>06 — Síguenos</div>
+          <h2>Nuestro día a día<br/><em>en Instagram.</em></h2>
+        </div>
+        <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ color: "var(--ink)" }}>@grupoenmar <Arrow /></a>
+      </div>
+      {ELFSIGHT_WIDGET_ID ? (
+        <div className={`elfsight-app-${ELFSIGHT_WIDGET_ID}`} data-elfsight-app-lazy></div>
+      ) : (
+        <div className="reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "80px 40px", background: "var(--cream)", textAlign: "center" }}>
+          <p style={{ color: "var(--graphite)", maxWidth: "48ch", fontSize: 16, lineHeight: 1.6 }}>Muy pronto, las últimas fotos de obra directamente desde Instagram. Mientras tanto, síguenos en @grupoenmar.</p>
+          <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Ver en Instagram <Arrow /></a>
+        </div>
+      )}
+    </div>
+  </section>
+);
 const ContactCTA = () => (
   <section style={{ background: "var(--ink)", color: "var(--bone)", padding: "160px 0", position: "relative", overflow: "hidden" }}>
     <div style={{ position: "absolute", inset: 0, backgroundImage: "url(https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=2000&q=80)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.18 }} />
     <div className="container-narrow" style={{ position: "relative", textAlign: "center" }}>
-      <div className="eyebrow eyebrow-gold" style={{ marginBottom: 32 }}><span className="gold-line"></span>06 — Hablemos</div>
+      <div className="eyebrow eyebrow-gold" style={{ marginBottom: 32 }}><span className="gold-line"></span>07 — Hablemos</div>
       <h2 style={{ color: "var(--bone)", marginBottom: 36, fontSize: "clamp(42px, 6vw, 88px)" }}>¿Tienes un <em>proyecto</em><br/>en mente?</h2>
       <p style={{ color: "rgba(245,239,217,0.7)", fontSize: 19, maxWidth: "52ch", margin: "0 auto 48px", lineHeight: 1.55 }}>Cuéntanos tu idea. Visitamos el terreno, entendemos tu visión y te damos una propuesta honesta y sin compromiso.</p>
       <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
@@ -237,5 +269,5 @@ const ContactCTA = () => (
     </div>
   </section>
 );
-const Home = () => { useReveal(); return (<><Nav current="home" variant="over-dark" /><Hero /><Stats /><Intro /><ServicesPreview /><Featured /><PortfolioTeaser /><Process /><Testimonials /><Ticker /><ContactCTA /><Footer /></>); };
+const Home = () => { useReveal(); return (<><Nav current="home" variant="over-dark" /><Hero /><Stats /><Intro /><ServicesPreview /><Featured /><PortfolioTeaser /><Process /><Testimonials /><Ticker /><InstagramFeed /><ContactCTA /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Home />);

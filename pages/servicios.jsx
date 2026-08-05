@@ -18,7 +18,7 @@ const services = [
 const Block = ({ s }) => (
   <section className="section" style={{ background: s.num % 2 === 0 ? "var(--bone)" : "var(--cream)" }}>
     <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center", direction: s.reverse ? "rtl" : "ltr" }}>
-      <div className="reveal img-hover" style={{ aspectRatio: "4/5", direction: "ltr" }}><img src={s.img} alt={s.title} /></div>
+      <div className="reveal img-hover" style={{ aspectRatio: "4/5", direction: "ltr" }}><img src={s.img} alt={s.title} loading="lazy" decoding="async" /></div>
       <div className="reveal" style={{ direction: "ltr" }}>
         <div style={{ fontFamily: "var(--serif)", fontSize: 100, color: "var(--gold)", fontWeight: 300, lineHeight: 1, marginBottom: 20, opacity: 0.5 }}>{String(s.num).padStart(2, "0")}</div>
         <h2 style={{ marginBottom: 28 }}>{s.title}</h2>

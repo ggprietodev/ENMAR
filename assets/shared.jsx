@@ -66,13 +66,40 @@ const Nav = ({ current, variant = "over-dark" }) => {
           <div className="drawer-foot">
             <a href="https://wa.me/34685972744">WhatsApp · +34 685 97 27 44</a>
             <a href="mailto:Grupoenmar@gmail.com">Grupoenmar@gmail.com</a>
+            <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer">Instagram · @grupoenmar</a>
           </div>
         </div>
       </div>
     </>
   );
 };
+const BackToTop = () => {
+  const [show, setShow] = React.useState(false);
+  React.useEffect(() => {
+    const f = () => setShow(window.scrollY > 800);
+    window.addEventListener("scroll", f);
+    return () => window.removeEventListener("scroll", f);
+  }, []);
+  const scrollTop = () => {
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.scrollTo({ top: 0, behavior });
+  };
+  return (
+    <button
+      onClick={scrollTop}
+      aria-label="Volver arriba"
+      className="back-to-top"
+      style={{ opacity: show ? 1 : 0, pointerEvents: show ? "auto" : "none" }}
+    >
+      <svg width="16" height="16" viewBox="0 0 14 10" fill="none" style={{ transform: "rotate(-90deg)" }}>
+        <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+      </svg>
+    </button>
+  );
+};
 const Footer = () => (
+  <>
+  <BackToTop />
   <footer className="footer">
     <div className="container">
       <div className="footer-top">
@@ -110,6 +137,7 @@ const Footer = () => (
             <li>39509 · Cantabria</li>
             <li style={{ marginTop: 8 }}><a href="mailto:Grupoenmar@gmail.com">Grupoenmar@gmail.com</a></li>
             <li><a href="https://wa.me/34685972744">+34 685 97 27 44</a></li>
+            <li><a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer">Instagram · @grupoenmar</a></li>
           </ul>
         </div>
       </div>
@@ -123,6 +151,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
+  </>
 );
 const useReveal = () => {
   React.useEffect(() => {

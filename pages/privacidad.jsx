@@ -34,7 +34,7 @@ const Content = () => (
       </div>
       <div>
         <h3 style={{ marginBottom: 16 }}>4. Destinatarios y encargados del tratamiento</h3>
-        <p style={{ color: "var(--graphite)", lineHeight: 1.7 }}>El formulario de contacto de este sitio utiliza el servicio de terceros <strong>FormSubmit</strong> para reenviar los envíos por email a ENMAR. No se ceden datos a otros terceros salvo obligación legal. No se realizan transferencias internacionales de datos fuera del Espacio Económico Europeo relacionadas con el formulario.</p>
+        <p style={{ color: "var(--graphite)", lineHeight: 1.7 }}>El formulario de contacto de este sitio utiliza el servicio de terceros <strong>FormSubmit</strong> para reenviar los envíos por email a ENMAR. El chat en directo del sitio funciona a través de <strong>Tidio</strong>, que actúa como encargado del tratamiento de las conversaciones que inicies. No se ceden datos a otros terceros salvo obligación legal.</p>
       </div>
       <div>
         <h3 style={{ marginBottom: 16 }}>5. Conservación de los datos</h3>

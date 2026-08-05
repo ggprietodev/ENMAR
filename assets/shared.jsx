@@ -82,9 +82,9 @@ const Nav = ({ current, variant = "over-dark" }) => {
         </button>
         <div className="drawer-inner">
           {links.map(l => (
-            <a key={l.key} href={l.href} className={current === l.key ? "active" : ""}>{l.label}</a>
+            <a key={l.key} href={l.href} className={`drawer-link ${current === l.key ? "active" : ""}`}>{l.label}</a>
           ))}
-          <a href="contacto.html" className="btn btn-primary" style={{ marginTop: 32, alignSelf: "flex-start" }}>Presupuesto</a>
+          <a href="contacto.html" className="btn btn-outline-gold drawer-cta">Presupuesto <Arrow /></a>
           <div className="drawer-foot">
             <a href="https://wa.me/34685972744">WhatsApp · +34 685 97 27 44</a>
             <a href="mailto:Grupoenmar@gmail.com">Grupoenmar@gmail.com</a>

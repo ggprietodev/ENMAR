@@ -86,6 +86,10 @@ const Content = () => (
           <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"var(--serif)", fontSize:22, color:"var(--ink)", borderBottom:"1px solid var(--gold)", paddingBottom:2 }}>@grupoenmar</a>
         </div>
         <div>
+          <div style={{ fontSize:11, letterSpacing:"0.24em", textTransform:"uppercase", color:"var(--olive)", marginBottom:16 }}>Tu opinión</div>
+          <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" style={{ fontFamily:"var(--serif)", fontSize:22, color:"var(--ink)", borderBottom:"1px solid var(--gold)", paddingBottom:2 }}>Danos tu opinión en Google</a>
+        </div>
+        <div>
           <div style={{ fontSize:11, letterSpacing:"0.24em", textTransform:"uppercase", color:"var(--olive)", marginBottom:16 }}>Horario</div>
           <div style={{ color:"var(--graphite)", fontSize:15, lineHeight:1.7 }}>Lunes a viernes · 9:00 – 18:00<br/>Sábados · Previa cita</div>
         </div>

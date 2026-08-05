@@ -182,40 +182,26 @@ const Process = () => {
     </section>
   );
 };
-const Testimonials = () => {
-  const t = [
-    { q: "Nos acompañaron en cada fase. La obra terminó en el plazo acordado y con acabados impecables. Volveríamos a elegirlos sin duda.", by: "María y Javier", r: "Casa en Comillas" },
-    { q: "Trato cercano y profesional. Supieron adaptar el proyecto a nuestras necesidades sin disparar el presupuesto. Muy recomendables.", by: "Familia Ruiz-Gómez", r: "Vivienda en Santillana" },
-    { q: "La comunicación semanal durante la obra marcó la diferencia. Siempre supimos exactamente en qué fase estábamos.", by: "Alberto M.", r: "Reforma integral, Torrelavega" },
-  ];
-  const [i, setI] = React.useState(0);
-  const [paused, setPaused] = React.useState(false);
-  React.useEffect(() => {
-    if (paused) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-    const timer = setInterval(() => setI(x => (x + 1) % t.length), 7000);
-    return () => clearInterval(timer);
-  }, [paused, t.length]);
-  return (
-    <section className="section" style={{ background: "var(--cream)" }} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div className="container-narrow" style={{ textAlign: "center" }}>
-        <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>05 — Testimonios</div>
-        <h2 style={{ marginBottom: 80 }}>Lo que dicen<br/><em>nuestros clientes.</em></h2>
-        <div style={{ position: "relative", minHeight: 280 }}>
-          <div style={{ fontFamily: "var(--serif)", fontSize: 200, color: "var(--gold)", opacity: 0.22, position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", lineHeight: 1 }}>"</div>
-          <p style={{ fontFamily: "var(--serif)", fontSize: 34, lineHeight: 1.35, fontWeight: 300, fontStyle: "italic", color: "var(--ink-soft)", maxWidth: "28ch", margin: "0 auto 40px", position: "relative" }}>{t[i].q}</p>
-          <div style={{ color: "var(--gold)", marginBottom: 20 }}>★★★★★</div>
-          <div style={{ fontFamily: "var(--serif)", fontSize: 22 }}>{t[i].by}</div>
-          <div style={{ fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--olive)", marginTop: 6 }}>{t[i].r}</div>
+// Sustituye ELFSIGHT_GOOGLE_WIDGET_ID por el ID del widget "Google Reviews" de
+// https://elfsight.com/google-reviews-widget/ (conecta la ficha de Google de ENMAR
+// allí) para que esta sección muestre la valoración y las reseñas reales.
+const ELFSIGHT_GOOGLE_WIDGET_ID = "";
+const GoogleReviews = () => (
+  <section className="section" style={{ background: "var(--cream)" }}>
+    <div className="container-narrow" style={{ textAlign: "center" }}>
+      <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>05 — Opiniones</div>
+      <h2 style={{ marginBottom: 48 }}>Lo que dicen<br/><em>nuestros clientes en Google.</em></h2>
+      {ELFSIGHT_GOOGLE_WIDGET_ID ? (
+        <div className={`elfsight-app-${ELFSIGHT_GOOGLE_WIDGET_ID}`} data-elfsight-app-lazy></div>
+      ) : (
+        <div className="reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "60px 40px", background: "var(--bone)" }}>
+          <p style={{ color: "var(--graphite)", maxWidth: "48ch", fontSize: 16, lineHeight: 1.6 }}>Aún no tenemos reseñas públicas en Google. Si has trabajado con nosotros, ¡sé el primero en contarlo!</p>
+          <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Danos tu opinión en Google <Arrow /></a>
         </div>
-        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 60 }}>
-          {t.map((_, j) => <button key={j} onClick={() => setI(j)} aria-label={`Ver testimonio ${j + 1} de ${t.length}`} aria-current={j === i} style={{ width: 40, height: 2, background: j === i ? "var(--gold)" : "rgba(26,29,23,0.2)", padding: 0 }} />)}
-        </div>
-      </div>
-    </section>
-  );
-};
+      )}
+    </div>
+  </section>
+);
 const Ticker = () => {
   const p = ["Santander","Comillas","Santillana del Mar","Torrelavega","Mazcuerras","San Vicente de la Barquera","Cabezón de la Sal","Suances","Villanueva de la Peña","Reocín"];
   const list = [...p, ...p];
@@ -269,5 +255,5 @@ const ContactCTA = () => (
     </div>
   </section>
 );
-const Home = () => { useReveal(); return (<><Nav current="home" variant="over-dark" /><Hero /><Stats /><Intro /><ServicesPreview /><Featured /><PortfolioTeaser /><Process /><Testimonials /><Ticker /><InstagramFeed /><ContactCTA /><Footer /></>); };
+const Home = () => { useReveal(); return (<><Nav current="home" variant="over-dark" /><Hero /><Stats /><Intro /><ServicesPreview /><Featured /><PortfolioTeaser /><Process /><GoogleReviews /><Ticker /><InstagramFeed /><ContactCTA /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Home />);

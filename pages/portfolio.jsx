@@ -37,7 +37,7 @@ const Grid = () => {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, rowGap: 60 }}>
           {filtered.map((p, i) => (
-            <a key={p.id} href="proyecto.html" className="reveal" style={{ display: "block", marginTop: i % 3 === 1 ? 60 : 0 }}>
+            <a key={p.id} href={`proyecto.html?id=${p.id}`} className="reveal" style={{ display: "block", marginTop: i % 3 === 1 ? 60 : 0 }}>
               <div className="img-hover" style={{ aspectRatio: "4/5", marginBottom: 20 }}><img src={p.img} alt={p.name} /></div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
                 <div style={{ fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--gold)" }}>{p.cat} · {p.year}</div>

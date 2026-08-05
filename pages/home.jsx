@@ -57,8 +57,8 @@ const Intro = () => (
         <a href="nosotros.html" className="btn btn-outline" style={{ color: "var(--ink)" }}>Conocer la empresa <Arrow /></a>
       </div>
       <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, position: "relative" }}>
-        <div className="img-hover" style={{ aspectRatio: "3/4", marginTop: 60 }}><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80" alt="" /></div>
-        <div className="img-hover" style={{ aspectRatio: "3/4" }}><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="" /></div>
+        <div className="img-hover" style={{ aspectRatio: "3/4", marginTop: 60 }}><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80" alt="Vivienda construida por ENMAR en Cantabria" /></div>
+        <div className="img-hover" style={{ aspectRatio: "3/4" }}><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Equipo de ENMAR trabajando en obra" /></div>
         <div style={{ position: "absolute", bottom: -30, left: -30, background: "var(--gold)", color: "var(--ink)", padding: "24px 32px", maxWidth: 240 }}>
           <div style={{ fontFamily: "var(--serif)", fontSize: 44, lineHeight: 1, marginBottom: 8 }}>3</div>
           <div style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase" }}>Años<br/>construyendo<br/>en Cantabria</div>
@@ -117,16 +117,16 @@ const Featured = () => (
           </div>
         ))}
       </div>
-      <a href="proyecto.html" className="btn btn-outline-gold" style={{ alignSelf: "flex-start" }}>Ver el proyecto <Arrow /></a>
+      <a href="proyecto.html?id=1" className="btn btn-outline-gold" style={{ alignSelf: "flex-start" }}>Ver el proyecto <Arrow /></a>
     </div>
   </section>
 );
 const PortfolioTeaser = () => {
   const p = [
-    { name: "Villa Las Encinas", loc: "Comillas", year: "2025", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80" },
-    { name: "Casa del Cabo", loc: "San Vicente", year: "2025", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80" },
-    { name: "Residencial El Mirador", loc: "Santillana", year: "2024", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=80" },
-    { name: "Casa de la Loma", loc: "Mazcuerras", year: "2024", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80" },
+    { id: 1, name: "Villa Las Encinas", loc: "Comillas", year: "2025", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80" },
+    { id: 2, name: "Casa del Cabo", loc: "San Vicente", year: "2025", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80" },
+    { id: 3, name: "Residencial El Mirador", loc: "Santillana", year: "2024", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=80" },
+    { id: 4, name: "Casa de la Loma", loc: "Mazcuerras", year: "2024", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80" },
   ];
   const styles = [{ gridRow: "1 / 3", aspectRatio: "4/5" }, { aspectRatio: "3/4" }, { aspectRatio: "3/4" }, { gridColumn: "1 / -1", aspectRatio: "16/8" }];
   return (
@@ -141,7 +141,7 @@ const PortfolioTeaser = () => {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gridTemplateRows: "auto auto", gap: 24 }}>
           {p.map((x, i) => (
-            <a key={x.name} href="proyecto.html" className="reveal img-hover" style={{ ...styles[i], position: "relative", overflow: "hidden" }}>
+            <a key={x.name} href={`proyecto.html?id=${x.id}`} className="reveal img-hover" style={{ ...styles[i], position: "relative", overflow: "hidden" }}>
               <img src={x.img} alt={x.name} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 50%, rgba(26,29,23,0.7) 100%)" }} />
               <div style={{ position: "absolute", bottom: 28, left: 28, right: 28, color: "var(--bone)" }}>

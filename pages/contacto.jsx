@@ -1,14 +1,37 @@
 // Contacto
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/Grupoenmar@gmail.com";
 const Form = () => {
   const [s, setS] = React.useState({ name:"", email:"", phone:"", service:"", msg:"" });
-  const [sent, setSent] = React.useState(false);
+  const [status, setStatus] = React.useState("idle"); // idle | sending | sent | error
   const u = (k) => (e) => setS(x => ({ ...x, [k]: e.target.value }));
   const input = { width:"100%", padding:"16px 0", background:"transparent", border:"none", borderBottom:"1px solid var(--line)", fontSize:16, fontFamily:"var(--sans)", color:"var(--ink)", outline:"none" };
   const label = { fontSize:11, letterSpacing:"0.24em", textTransform:"uppercase", color:"var(--olive)", marginBottom:4, display:"block" };
-  if (sent) return (<div style={{ padding:48, background:"var(--cream)", textAlign:"center" }}><div style={{ fontFamily:"var(--serif)", fontSize:56, color:"var(--gold)", marginBottom:16 }}>✓</div><h3 style={{ marginBottom:16 }}>Mensaje recibido</h3><p style={{ color:"var(--graphite)" }}>Gracias por contactar con ENMAR. Te respondemos en menos de 24 horas.</p></div>);
+  if (status === "sent") return (<div style={{ padding:48, background:"var(--cream)", textAlign:"center" }}><div style={{ fontFamily:"var(--serif)", fontSize:56, color:"var(--gold)", marginBottom:16 }}>✓</div><h3 style={{ marginBottom:16 }}>Mensaje recibido</h3><p style={{ color:"var(--graphite)" }}>Gracias por contactar con ENMAR. Te respondemos en menos de 24 horas.</p></div>);
   const services = ["Obra nueva unifamiliar","Promoción residencial","Reforma integral","Gestión de proyecto","Otro / Consulta general"];
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          Nombre: s.name,
+          Email: s.email,
+          Teléfono: s.phone || "No indicado",
+          "Servicio de interés": s.service || "No indicado",
+          Mensaje: s.msg,
+          _subject: `Nueva consulta web de ${s.name}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Envío fallido");
+      setStatus("sent");
+    } catch (err) {
+      setStatus("error");
+    }
+  };
   return (
-    <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display:"flex", flexDirection:"column", gap:32 }}>
+    <form onSubmit={onSubmit} style={{ display:"flex", flexDirection:"column", gap:32 }}>
       <div><label style={label}>Nombre completo *</label><input required value={s.name} onChange={u("name")} style={input} placeholder="Tu nombre" /></div>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:32 }}>
         <div><label style={label}>Email *</label><input required type="email" value={s.email} onChange={u("email")} style={input} placeholder="tu@email.com" /></div>
@@ -16,8 +39,11 @@ const Form = () => {
       </div>
       <div><label style={label}>Servicio de interés</label><select value={s.service} onChange={u("service")} style={{ ...input, cursor:"pointer" }}><option value="">Selecciona un servicio</option>{services.map(x => <option key={x} value={x}>{x}</option>)}</select></div>
       <div><label style={label}>Cuéntanos tu proyecto *</label><textarea required value={s.msg} onChange={u("msg")} rows="4" style={{ ...input, resize:"vertical" }} placeholder="Ubicación, metros aproximados, estilo, fechas..." /></div>
-      <div style={{ fontSize:12, color:"var(--muted)", lineHeight:1.6 }}>Al enviar aceptas nuestra política de privacidad. Responderemos en menos de 24 horas laborables.</div>
-      <button type="submit" className="btn btn-primary" style={{ alignSelf:"flex-start" }}>Enviar mensaje <Arrow /></button>
+      <div style={{ fontSize:12, color:"var(--muted)", lineHeight:1.6 }}>Al enviar aceptas nuestra <a href="privacidad.html" style={{ borderBottom:"1px solid currentColor" }}>política de privacidad</a>. Responderemos en menos de 24 horas laborables.</div>
+      {status === "error" && (
+        <div style={{ fontSize:13, color:"#A6432E", lineHeight:1.6 }}>No hemos podido enviar el formulario. Escríbenos directamente a <a href="mailto:Grupoenmar@gmail.com" style={{ borderBottom:"1px solid currentColor" }}>Grupoenmar@gmail.com</a> o por WhatsApp.</div>
+      )}
+      <button type="submit" className="btn btn-primary" disabled={status === "sending"} style={{ alignSelf:"flex-start", opacity: status === "sending" ? 0.6 : 1 }}>{status === "sending" ? "Enviando…" : (<>Enviar mensaje <Arrow /></>)}</button>
     </form>
   );
 };

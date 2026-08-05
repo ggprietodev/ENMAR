@@ -116,9 +116,9 @@ const Footer = () => (
       <div className="footer-bottom">
         <div>© 2026 ENMAR · CIF B13817150</div>
         <div>
-          <a href="#">Aviso legal</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Cookies</a>
+          <a href="aviso-legal.html">Aviso legal</a>
+          <a href="privacidad.html">Privacidad</a>
+          <a href="cookies.html">Cookies</a>
         </div>
       </div>
     </div>

@@ -16,6 +16,28 @@ const Arrow = ({ size = 14 }) => (
     <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
   </svg>
 );
+const TrustBar = () => {
+  const items = [
+    { n: "+10", l: "Años de experiencia" },
+    { n: "10", l: "Años de garantía decenal" },
+    { n: "100%", l: "Equipo propio en obra" },
+    { n: "24+", l: "Proyectos entregados" },
+  ];
+  return (
+    <section style={{ background: "var(--ink)", color: "var(--bone)", padding: "64px 0" }}>
+      <div className="container">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
+          {items.map((it, i) => (
+            <div key={i} className="reveal" style={{ borderLeft: "1px solid rgba(201,169,97,0.3)", paddingLeft: 28 }}>
+              <div style={{ fontFamily: "var(--serif)", fontSize: 48, fontWeight: 300, color: "var(--gold)", lineHeight: 1, marginBottom: 10 }}>{it.n}</div>
+              <div style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(245,239,217,0.6)" }}>{it.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 const Nav = ({ current, variant = "over-dark" }) => {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);

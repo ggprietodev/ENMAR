@@ -10,7 +10,7 @@ const Head = () => (
   </section>
 );
 const services = [
-  { num: 1, title: "Obra nueva — Viviendas unifamiliares", desc: "Diseñamos y construimos viviendas a medida. Cada proyecto es único, pensado para quien lo va a habitar y adaptado al entorno cántabro.", features: ["Proyecto arquitectónico personalizado con estudio colaborador","Cubiertas de madera laminada, nuestra especialidad","Control de calidad en cada fase, visitas semanales","Entrega llave en mano con presupuesto cerrado"], img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&q=80" },
+  { num: 1, title: "Obra nueva — Viviendas unifamiliares", desc: "Diseñamos y construimos viviendas a medida. Cada proyecto es único, pensado para quien lo va a habitar y adaptado al entorno cántabro.", features: ["Proyecto arquitectónico personalizado, en colaboración con estudios de confianza","Cubiertas de madera laminada, nuestra especialidad","Control de calidad en cada fase, con visitas semanales","Entrega llave en mano con presupuesto cerrado"], img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&q=80" },
   { num: 2, title: "Promociones residenciales", desc: "Desarrollamos promociones inmobiliarias de pequeña y mediana escala en Cantabria, desde la adquisición del suelo hasta la venta final.", features: ["Búsqueda y gestión del suelo","Diseño arquitectónico y tramitación de licencias","Financiación y comercialización","Entrega de viviendas terminadas con garantía decenal"], img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1400&q=80", reverse: true },
   { num: 3, title: "Reformas integrales", desc: "Transformamos viviendas existentes con el mismo nivel de exigencia y acabados que aplicamos en una obra nueva.", features: ["Estudio previo del inmueble y viabilidad","Rediseño de distribución y sistemas","Acabados de alta calidad y eficiencia energética","Plazos cerrados y mínima molestia"], img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1400&q=80" },
   { num: 4, title: "Gestión integral del proyecto", desc: "Un único interlocutor para todo el proceso: proyecto, licencias, ejecución, seguimiento económico y entrega.", features: ["Coordinación con arquitectos y técnicos","Gestión de licencias y permisos municipales","Control económico y de plazos transparente","Acompañamiento post-obra durante el primer año"], img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80", reverse: true },
@@ -74,5 +74,5 @@ const CTA = () => (
     </div>
   </section>
 );
-const Page = () => { useReveal(); return (<><Nav current="services" variant="over-dark" /><Head />{services.map(s => <Block key={s.num} s={s} />)}<Process /><CTA /><Footer /></>); };
+const Page = () => { useReveal(); return (<><Nav current="services" variant="over-dark" /><Head /><TrustBar />{services.map(s => <Block key={s.num} s={s} />)}<Process /><CTA /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Page />);

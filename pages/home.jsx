@@ -182,23 +182,14 @@ const Process = () => {
     </section>
   );
 };
-// Sustituye ELFSIGHT_GOOGLE_WIDGET_ID por el ID del widget "Google Reviews" de
-// https://elfsight.com/google-reviews-widget/ (conecta la ficha de Google de ENMAR
-// allí) para que esta sección muestre la valoración y las reseñas reales.
-const ELFSIGHT_GOOGLE_WIDGET_ID = "";
+// Widget "Google Reviews" de SociableKit (plan gratuito), conectado a la ficha
+// de Google de ENMAR desde sociablekit.com. El script se carga una vez en <head>.
 const GoogleReviews = () => (
   <section className="section" style={{ background: "var(--cream)" }}>
     <div className="container-narrow" style={{ textAlign: "center" }}>
       <div className="eyebrow" style={{ marginBottom: 24 }}><span className="gold-line"></span>05 — Opiniones</div>
       <h2 style={{ marginBottom: 48 }}>Lo que dicen<br/><em>nuestros clientes en Google.</em></h2>
-      {ELFSIGHT_GOOGLE_WIDGET_ID ? (
-        <div className={`elfsight-app-${ELFSIGHT_GOOGLE_WIDGET_ID}`} data-elfsight-app-lazy></div>
-      ) : (
-        <div className="reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "60px 40px", background: "var(--bone)" }}>
-          <p style={{ color: "var(--graphite)", maxWidth: "48ch", fontSize: 16, lineHeight: 1.6 }}>Aún no tenemos reseñas públicas en Google. Si has trabajado con nosotros, ¡sé el primero en contarlo!</p>
-          <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Danos tu opinión en Google <Arrow /></a>
-        </div>
-      )}
+      <div className="reveal sk-ww-google-reviews" data-embed-id="25703025"></div>
     </div>
   </section>
 );
@@ -217,9 +208,8 @@ const Ticker = () => {
     </section>
   );
 };
-// Sustituye ELFSIGHT_WIDGET_ID por el ID de tu widget en https://elfsight.com/instagram-feed-instashow/
-// (conecta tu cuenta @grupoenmar allí) para que este bloque muestre el feed real y se actualice solo.
-const ELFSIGHT_WIDGET_ID = "";
+// Widget "Instagram Feed" de SociableKit (plan gratuito), conectado a @grupoenmar
+// desde sociablekit.com. El script se carga una vez en <head>.
 const InstagramFeed = () => (
   <section className="section" style={{ background: "var(--bone)" }}>
     <div className="container">
@@ -230,14 +220,7 @@ const InstagramFeed = () => (
         </div>
         <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ color: "var(--ink)" }}>@grupoenmar <Arrow /></a>
       </div>
-      {ELFSIGHT_WIDGET_ID ? (
-        <div className={`elfsight-app-${ELFSIGHT_WIDGET_ID}`} data-elfsight-app-lazy></div>
-      ) : (
-        <div className="reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "80px 40px", background: "var(--cream)", textAlign: "center" }}>
-          <p style={{ color: "var(--graphite)", maxWidth: "48ch", fontSize: 16, lineHeight: 1.6 }}>Muy pronto, las últimas fotos de obra directamente desde Instagram. Mientras tanto, síguenos en @grupoenmar.</p>
-          <a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Ver en Instagram <Arrow /></a>
-        </div>
-      )}
+      <div className="reveal sk-instagram-feed" data-embed-id="25703029"></div>
     </div>
   </section>
 );

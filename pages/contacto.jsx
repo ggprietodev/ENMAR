@@ -111,5 +111,5 @@ const MapBlock = () => (
     </div>
   </section>
 );
-const Page = () => { useReveal(); return (<><Nav current="contact" variant="over-light" /><Head /><Content /><MapBlock /><Footer /></>); };
+const Page = () => { useReveal(); return (<><Nav current="contact" variant="over-light" /><Head /><TrustBar /><Content /><MapBlock /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Page />);

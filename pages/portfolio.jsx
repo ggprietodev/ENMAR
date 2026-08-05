@@ -61,5 +61,5 @@ const CTA = () => (
     </div>
   </section>
 );
-const Page = () => { useReveal(); return (<><Nav current="portfolio" variant="over-dark" /><Head /><Grid /><CTA /><Footer /></>); };
+const Page = () => { useReveal(); return (<><Nav current="portfolio" variant="over-dark" /><Head /><TrustBar /><Grid /><CTA /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Page />);

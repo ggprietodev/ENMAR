@@ -1,6 +1,6 @@
 // Promociones
 const promos = [
-  { name: "Residencial El Mirador", loc: "Santillana del Mar", status: "En venta", desc: "8 viviendas unifamiliares adosadas con vistas al mar Cantábrico. Entrega prevista Q3 2026.", price: "Desde 385.000 €", units: "3 disponibles", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1600&q=80" },
+  { name: "Residencial El Mirador", loc: "Santillana del Mar", status: "En venta", desc: "8 viviendas unifamiliares adosadas con vistas al mar Cantábrico. Entrega prevista en el tercer trimestre de 2026.", price: "Desde 385.000 €", units: "3 disponibles", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1600&q=80" },
   { name: "Residencial Mar & Pino", loc: "Suances", status: "Próximamente", desc: "6 viviendas en primera línea de costa. Comercialización abierta para reserva.", price: "Consultar", units: "6 unidades", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80" },
   { name: "Promoción Villanueva", loc: "Villanueva de la Peña", status: "Entregado 2025", desc: "4 viviendas unifamiliares entregadas en 2025. Todas las unidades vendidas.", price: "Vendido", units: "0 disponibles", img: "https://images.unsplash.com/photo-1600566753086-00f18fe6ba68?w=1600&q=80" },
 ];
@@ -54,5 +54,5 @@ const CTA = () => (
     </div>
   </section>
 );
-const Page = () => { useReveal(); return (<><Nav current="promos" variant="over-dark" /><Head /><List /><CTA /><Footer /></>); };
+const Page = () => { useReveal(); return (<><Nav current="promos" variant="over-dark" /><Head /><TrustBar /><List /><CTA /><Footer /></>); };
 ReactDOM.createRoot(document.getElementById("root")).render(<Page />);

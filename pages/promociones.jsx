@@ -18,7 +18,7 @@ const Card = ({ p, i }) => {
   const col = p.status === "En venta" ? "var(--gold)" : p.status === "Próximamente" ? "var(--olive)" : "var(--muted)";
   return (
     <div className="reveal" style={{ display: "grid", gridTemplateColumns: i % 2 === 0 ? "1.2fr 1fr" : "1fr 1.2fr", gap: 60, alignItems: "center", padding: "80px 0", borderBottom: "1px solid var(--line)" }}>
-      <div className="img-hover" style={{ aspectRatio: "4/3", order: i % 2 === 0 ? 0 : 1 }}><img src={p.img} alt={p.name} /></div>
+      <div className="img-hover" style={{ aspectRatio: "4/3", order: i % 2 === 0 ? 0 : 1 }}><img src={p.img} alt={p.name} loading="lazy" decoding="async" /></div>
       <div style={{ order: i % 2 === 0 ? 1 : 0, padding: "0 20px" }}>
         <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 20 }}>
           <span style={{ padding: "6px 12px", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", border: `1px solid ${col}`, color: col }}>{p.status}</span>

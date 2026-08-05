@@ -73,7 +73,33 @@ const Nav = ({ current, variant = "over-dark" }) => {
     </>
   );
 };
+const BackToTop = () => {
+  const [show, setShow] = React.useState(false);
+  React.useEffect(() => {
+    const f = () => setShow(window.scrollY > 800);
+    window.addEventListener("scroll", f);
+    return () => window.removeEventListener("scroll", f);
+  }, []);
+  const scrollTop = () => {
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.scrollTo({ top: 0, behavior });
+  };
+  return (
+    <button
+      onClick={scrollTop}
+      aria-label="Volver arriba"
+      className="back-to-top"
+      style={{ opacity: show ? 1 : 0, pointerEvents: show ? "auto" : "none" }}
+    >
+      <svg width="16" height="16" viewBox="0 0 14 10" fill="none" style={{ transform: "rotate(-90deg)" }}>
+        <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" />
+      </svg>
+    </button>
+  );
+};
 const Footer = () => (
+  <>
+  <BackToTop />
   <footer className="footer">
     <div className="container">
       <div className="footer-top">
@@ -125,6 +151,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
+  </>
 );
 const useReveal = () => {
   React.useEffect(() => {

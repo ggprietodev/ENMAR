@@ -70,11 +70,11 @@ const Gallery = () => (
   <section className="section-sm">
     <div className="container">
       <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 24, marginBottom: 24 }}>
-        <div className="reveal img-hover" style={{ aspectRatio: "16/10" }}><img src={imgs[1]} alt={`${project.name} — vista exterior`} /></div>
-        <div className="reveal img-hover" style={{ aspectRatio: "4/5" }}><img src={imgs[2]} alt={`${project.name} — detalle de fachada`} /></div>
+        <div className="reveal img-hover" style={{ aspectRatio: "16/10" }}><img src={imgs[1]} alt={`${project.name} — vista exterior`} loading="lazy" decoding="async" /></div>
+        <div className="reveal img-hover" style={{ aspectRatio: "4/5" }}><img src={imgs[2]} alt={`${project.name} — detalle de fachada`} loading="lazy" decoding="async" /></div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
-        {[imgs[3], imgs[4], imgs[5]].map((src, i) => (<div key={i} className="reveal img-hover" style={{ aspectRatio: "4/5" }}><img src={src} alt={`${project.name} — interior`} /></div>))}
+        {[imgs[3], imgs[4], imgs[5]].map((src, i) => (<div key={i} className="reveal img-hover" style={{ aspectRatio: "4/5" }}><img src={src} alt={`${project.name} — interior`} loading="lazy" decoding="async" /></div>))}
       </div>
     </div>
   </section>

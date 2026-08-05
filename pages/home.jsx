@@ -212,6 +212,7 @@ const Testimonials = () => {
         <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 60 }}>
           {t.map((_, j) => <button key={j} onClick={() => setI(j)} aria-label={`Ver testimonio ${j + 1} de ${t.length}`} aria-current={j === i} style={{ width: 40, height: 2, background: j === i ? "var(--gold)" : "rgba(26,29,23,0.2)", padding: 0 }} />)}
         </div>
+        <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ color: "var(--ink)", marginTop: 48 }}>Danos tu opinión en Google <Arrow /></a>
       </div>
     </section>
   );

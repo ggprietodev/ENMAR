@@ -1,4 +1,5 @@
 // ENMAR — shared components
+const GOOGLE_REVIEW_URL = "https://share.google/b9UB9UsLNQXBqe2tN";
 const LogoMark = ({ style }) => (
   <svg style={style} viewBox="0 0 220 200" fill="none">
     <g stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
@@ -160,6 +161,7 @@ const Footer = () => (
             <li style={{ marginTop: 8 }}><a href="mailto:Grupoenmar@gmail.com">Grupoenmar@gmail.com</a></li>
             <li><a href="https://wa.me/34685972744">+34 685 97 27 44</a></li>
             <li><a href="https://www.instagram.com/grupoenmar" target="_blank" rel="noopener noreferrer">Instagram · @grupoenmar</a></li>
+            <li><a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer">Danos tu opinión en Google</a></li>
           </ul>
         </div>
       </div>
